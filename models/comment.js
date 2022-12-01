@@ -12,7 +12,13 @@ const commentSchema= new Schema(
             type: Date,
             default: Date.now,
             get: timeFormat
-            }
-        }
+            },
+        username: {
+                type: String,
+                required: true
+        },
+        replies: [replySchema],
+    },
+    
 
 )
