@@ -41,5 +41,16 @@ module.exports = {
           )
           .catch((err) => res.status(500).json(err));
       },
+      //deleting a comment
+      deleteComment(req, res) {
+        Comment.findOneAndDelete({ _id: req.params.commentId })
+          .then((comment) =>
+            !comment
+              ? res.status(404).json({ message: 'No comment found with that ID' })
+              : User.deleteMany({ _id: { $in: comment.users} })
+          )
+          .then(() => res.json({ message: 'Comment and user deleted!' }))
+          .catch((err) => res.status(500).json(err));
+      },
 
 }
