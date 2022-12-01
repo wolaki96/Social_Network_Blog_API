@@ -61,7 +61,22 @@ addFriend(req, res) {
         )
         .catch((err) => res.status(500).json(err));
     },
-    
+
+    // deleting a friend from friends list
+deleteFriend(req, res) {
+    User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId } },
+        { runValidators: true, new: true }
+      )
+        .then((user) =>
+          !user
+            ? res.status(404).json({ message: 'No user found with this id! Friend cannot be removed :c!' })
+            : res.status(200).json(user)
+        )
+        .catch((err) => res.status(500).json(err));
+}
+
 }
 
 
