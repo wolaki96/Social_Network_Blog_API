@@ -27,6 +27,19 @@ module.exports = {
             return res.status(500).json(err);
           });
       },
-    
+    // updating a comment 
+    updateComment(req, res) {
+        Comment.findOneAndUpdate(
+          { _id: req.params.commentId },
+          { $set: req.body },
+          { runValidators: true, new: true }
+        )
+          .then((comment) =>
+            !comment
+              ? res.status(404).json({ message: 'No comments found with this id!' })
+              : res.json(comment)
+          )
+          .catch((err) => res.status(500).json(err));
+      },
 
 }
