@@ -19,6 +19,11 @@ const commentSchema= new Schema(
         },
         replies: [replySchema],
     },
-    
-
+    {
+    toJSON: {
+        getters: true
+    },
+    id: false
+    }
 )
+function timeFormat(createdAt) 
