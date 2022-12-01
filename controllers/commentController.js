@@ -66,4 +66,20 @@ createReply(req, res) {
       )
       .catch((err) => res.status(500).json(err));
   },
+
+//deleting a reply
+deleteReply(req, res) {
+    Comment.findOneAndUpdate(
+      { _id: req.params.commentId },
+      { $pull: { replies: { repliesId: req.params.repliesId } } },
+      { runValidators: true, new: true }
+    )
+      .then((comment) =>
+        !comment
+          ? res.status(404).json({ message: 'No comment found with this id!' })
+          : res.status(200).json(comment)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
 }
+
