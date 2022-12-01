@@ -9,7 +9,7 @@ const {
 
 router.route('/').get(getComment).post(createComment);
 
-router.route('/:courseId')
+router.route('/:commentId')
     .get(getSingleComment)
     .put(updateComment)
     .delete(deleteComment);
