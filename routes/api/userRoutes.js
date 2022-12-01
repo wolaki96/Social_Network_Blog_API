@@ -3,7 +3,7 @@ const {
     getUsers,
     getOneUser,
     createUser,
-} = require('../../controllers/userController');
+} = require('../../controllers/userControllerr');
 //connect to user route to create a user or see all users
 router.route('/').get(getUsers).post(createUser);
 
