@@ -52,5 +52,18 @@ module.exports = {
           .then(() => res.json({ message: 'Comment and user deleted!' }))
           .catch((err) => res.status(500).json(err));
       },
-
+//creating a reply
+createReply(req, res) {
+    Comment.findOneAndUpdate(
+      { _id: req.params.commentId },
+      { $addToSet: { replies: req.body } },
+      { runValidators: true, new: true }
+    )
+      .then((comment) =>
+        !comment
+          ? res.status(404).json({ message: 'No comment with this id!' })
+          : res.status(200).json(comment)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
 }
