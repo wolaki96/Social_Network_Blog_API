@@ -10,8 +10,7 @@ const commentSchema= new Schema(
         },
         createdAt:{
             type: Date,
-            default: Date.now,
-            get: timeFormat
+            default: Date.now
             },
         username: {
                 type: String,
@@ -26,4 +25,6 @@ const commentSchema= new Schema(
     id: false
     }
 )
-function timeFormat(createdAt) 
+const Comment = model('comment', commentSchema);
+
+module.exports = Comment;
