@@ -51,8 +51,13 @@ const replySchema = new Schema(
     createdAt: {
         type: Date,
         default: Date.now,
-        get: 
-    }
+        
+    },
+    toJSON: {
+        virtuals: true,
+        getters: true
+    },
+    id: false
     }
 )
 
