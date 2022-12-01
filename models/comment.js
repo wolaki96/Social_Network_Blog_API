@@ -21,11 +21,16 @@ const commentSchema= new Schema(
     },
     {
     toJSON: {
-        getters: true
+        getters: true,
+        virtuals: true
     },
     id: false
     }
 )
+commentSchema.virtual('replyCount').get(function (){
+    return this.replies.length;
+});
+
 const Comment = model('comment', commentSchema);
 
 module.exports = Comment;
