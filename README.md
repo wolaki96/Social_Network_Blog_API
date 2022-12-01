@@ -23,7 +23,7 @@ To install the project, you must have vs code, install mongodb and insomnia.
 
 You use this project by opening your command line and typing npm start. Then you use an api app such as Insomnia or Postman to get access to all your data from the api or use Compass for MongoDB to check out the database.
 
-![screenshot](/Social_Network_Blog_API/assets/comments.PNG)
+![screenshot](/assets/comments.PNG)
     
 
 ## Credits
